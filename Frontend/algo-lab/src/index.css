@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #10161F; }
+::-webkit-scrollbar-thumb { background: #232C3D; border-radius: 4px; }
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+.animate-pulse-glow { animation: pulseGlow 2.2s ease-in-out infinite; }
+
+@keyframes dashFlow {
+  to { stroke-dashoffset: -20; }
+}
+.edge-flow {
+  stroke-dasharray: 5 4;
+  animation: dashFlow 0.5s linear infinite;
+}
+
+@keyframes drift {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-14px,-10px); }
+  100% { transform: translate(0,0); }
+}
+.animate-drift { animation: drift 12s ease-in-out infinite; }
