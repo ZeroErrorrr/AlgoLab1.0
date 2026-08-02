@@ -14,6 +14,8 @@ app.use(cors({ origin: FRONTEND_ORIGIN }));
 app.use(express.json());
 
 const apiKey = process.env.GEMINI_API_KEY;
+console.log("API Key exists:", !!apiKey);
+console.log("API Key prefix:", apiKey?.substring(0, 8));
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 // Model name changes over time — if this starts failing, check
@@ -62,9 +64,6 @@ app.post("/api/explain", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`AlgoLab backend running on http://localhost:${PORT}`);
-  console.log(
-    apiKey
-      ? "Gemini API key detected — /api/explain is live."
-      : "⚠ No GEMINI_API_KEY set — /api/explain will return 503 until you add one to .env."
-  );
+  console.log("API KEY EXISTS:", !!apiKey);
+console.log("API KEY PREFIX:", apiKey?.substring(0, 10));
 });
