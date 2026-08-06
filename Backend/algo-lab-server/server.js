@@ -49,17 +49,49 @@ app.post("/api/explain", async (req, res) => {
 
   try {
     const prompt = buildPrompt(algorithm, context || {});
-    const response = await ai.models.generateContent({
+    let response;
+
+for (let attempt = 1; attempt <= 3; attempt++) {
+  try {
+    response = await ai.models.generateContent({
       model: MODEL,
       contents: prompt,
     });
-    const text = response.text?.trim() || "I couldn't generate an explanation for that just now.";
-    cache.set(cacheKey, text);
-    res.json({ explanation: text });
+    break;
   } catch (err) {
-    console.error("Gemini call failed:", err.message);
-    res.status(502).json({ error: "Gemini API call failed.", detail: err.message });
+    if (attempt === 3) throw err;
+
+    console.log(`Retrying Gemini... Attempt ${attempt}`);
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
+}
+
+const text =
+  response.text?.trim() ||
+  "I couldn't generate an explanation.";
+
+cache.set(cacheKey, text);
+
+res.json({
+  explanation: text,
+}); 
+  } catch (err) {
+
+  console.error("Gemini Error:", err);
+
+  if (String(err.message).includes("503")) {
+    return res.status(503).json({
+      error: "Gemini servers are currently busy. Please try again in a few seconds.",
+    });
+  }
+
+  res.status(500).json({
+    error: "Gemini API failed.",
+    detail: err.message,
+  });
+
+}
 });
 
 app.listen(PORT, () => {
