@@ -8,6 +8,7 @@ import DecisionTreeSim from "./pages/simulations/DecisionTreeSim.jsx";
 import KNNSim from "./pages/simulations/KNNSim.jsx";
 import LinearRegressionSim from "./pages/simulations/LinearRegressionSim.jsx";
 import NeuralNetworkSim from "./pages/simulations/NeuralNetworkSim.jsx";
+  import AlgorithmExplorer from "./pages/AlgorithmExplorer/AlgorithmExplorer";
 
 export default function App() {
   return (
@@ -22,6 +23,10 @@ export default function App() {
         <Route path="/sim/knn" element={<KNNSim />} />
         <Route path="/sim/linear-regression" element={<LinearRegressionSim />} />
         <Route path="/sim/neural-network" element={<NeuralNetworkSim />} />
+          <Route
+      path="/algorithm-explorer"
+      element={<AlgorithmExplorer />}
+  />
       </Routes>
     </div>
   );

@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 
 const links = [
-  { to: "/", label: "Landing", end: true },
+  { to: "/", label: "Explorer", end: true },
   { to: "/hub", label: "Algorithm Hub" },
+  { to: "/algorithm-explorer", label: "3D Matrix" },
   { to: "/tutor", label: "AI Tutor" },
   { to: "/challenge", label: "Challenge Mode" },
 ];
