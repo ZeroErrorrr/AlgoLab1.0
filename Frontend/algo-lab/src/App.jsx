@@ -8,7 +8,9 @@ import DecisionTreeSim from "./pages/simulations/DecisionTreeSim.jsx";
 import KNNSim from "./pages/simulations/KNNSim.jsx";
 import LinearRegressionSim from "./pages/simulations/LinearRegressionSim.jsx";
 import NeuralNetworkSim from "./pages/simulations/NeuralNetworkSim.jsx";
-  import AlgorithmExplorer from "./pages/AlgorithmExplorer/AlgorithmExplorer";
+import AlgorithmExplorer from "./pages/AlgorithmExplorer/AlgorithmExplorer";
+import StoryMode from "./pages/StoryMode";
+import DailyChallenges from "./pages/DailyChallenges";
 
 export default function App() {
   return (
@@ -23,10 +25,9 @@ export default function App() {
         <Route path="/sim/knn" element={<KNNSim />} />
         <Route path="/sim/linear-regression" element={<LinearRegressionSim />} />
         <Route path="/sim/neural-network" element={<NeuralNetworkSim />} />
-          <Route
-      path="/algorithm-explorer"
-      element={<AlgorithmExplorer />}
-  />
+        <Route path="/algorithm-explorer" element={<AlgorithmExplorer />} />
+        <Route path="/story-mode" element={<StoryMode />} />
+        <Route path="/daily-challenges" element={<DailyChallenges />} />
       </Routes>
     </div>
   );

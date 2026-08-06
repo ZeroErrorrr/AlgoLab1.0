@@ -4,6 +4,8 @@ const links = [
   { to: "/", label: "Explorer", end: true },
   { to: "/hub", label: "Algorithm Hub" },
   { to: "/algorithm-explorer", label: "3D Matrix" },
+  { to: "/story-mode", label: "Story Mode" }, // 👈 Added
+  { to: "/daily-challenges", label: "Daily Challenges" }, // 👈 Added
   { to: "/tutor", label: "AI Tutor" },
   { to: "/challenge", label: "Challenge Mode" },
 ];
